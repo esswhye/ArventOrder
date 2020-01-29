@@ -1,9 +1,12 @@
-package com.arvent.order.common.client;
+package com.arvent.order.client;
 
 import com.arvent.order.dto.Product;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,9 +18,9 @@ public interface ProductClient {
     ResponseEntity <Product>getProductById(@RequestParam("productId") Long productId);
 
     @PostMapping("/product/updateProductQuantity")
-    ResponseEntity updateProductQuantity(@RequestBody HashMap<Long,Integer> productIdQuality);
+    ResponseEntity updateProductQuantity(@RequestBody HashMap<Long, Integer> productIdQuality);
 
     @PostMapping("/product/resetProductQuantity")
-    ResponseEntity updateProductQuantityBack(@RequestBody Map<Long,Integer> productsIdQuality);
+    ResponseEntity updateProductQuantityBack(@RequestBody Map<Long, Integer> productsIdQuality);
 
 }

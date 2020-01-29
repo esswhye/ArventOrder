@@ -1,4 +1,4 @@
-package com.arvent.order.common.client;
+package com.arvent.order.client;
 
 import com.arvent.order.dto.ShoppingCartItemListDTO;
 import org.springframework.cloud.openfeign.FeignClient;

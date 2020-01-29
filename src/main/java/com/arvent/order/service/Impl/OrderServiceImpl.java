@@ -1,19 +1,16 @@
 package com.arvent.order.service.Impl;
 
-import com.arvent.order.common.client.CustomerClient;
-import com.arvent.order.common.client.ProductClient;
+import com.arvent.order.client.CustomerClient;
+import com.arvent.order.client.ProductClient;
 import com.arvent.order.dto.Product;
 import com.arvent.order.dto.ShoppingCartDTO;
 import com.arvent.order.dto.ShoppingCartItemListDTO;
 import com.arvent.order.entity.Order;
 import com.arvent.order.entity.OrderItem;
 import com.arvent.order.entity.Status;
-import com.arvent.order.exception.OutOfStockException;
-import com.arvent.order.repository.OrderItemRepository;
 import com.arvent.order.repository.OrderRepository;
 import com.arvent.order.service.OrderService;
 import lombok.AllArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
