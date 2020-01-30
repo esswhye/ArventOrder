@@ -5,6 +5,9 @@ import com.arvent.order.exception.OutOfStockException;
 import com.arvent.order.service.OrderService;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,9 +15,10 @@ import com.arvent.order.entity.Order;
 
 @RestController
 @RequestMapping(name = "order")
-@AllArgsConstructor
+//@AllArgsConstructor
 public class OrderController {
 
+    @Autowired
     private OrderService orderService;
 
 
@@ -79,5 +83,19 @@ public class OrderController {
         return new ResponseEntity<>("Delete Successfully", HttpStatus.OK);
 
     }
+
+    @Value("${server.port}")
+    private String port;
+
+    private int counter;
+
+    @GetMapping("/testLoadBalancing")
+    public ResponseEntity loadBalancingTest() throws InterruptedException {
+
+        counter++;
+        return new ResponseEntity<>(counter + " ==> response from " + port,HttpStatus.OK);
+
+    }
+
 
 }
