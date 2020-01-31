@@ -28,9 +28,9 @@ spring:
     consul:
       discovery:
         enabled: true
-        instance-id: order-service
-        service-name: corder-service
-        prefer-ip-address: true
+        instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
+        service-name: order-service
+#        prefer-ip-address: true
         register-health-check: true
       host: consul
       port: 8500
