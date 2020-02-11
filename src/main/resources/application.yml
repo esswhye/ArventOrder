@@ -4,37 +4,38 @@ spring:
   application:
     name: order-service
   datasource:
-    url: jdbc:mysql://localhost:32769/Eviant?useSSL=false&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://192.168.1.26:3306/Eviant?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Singapore
     password: password
-    username: user
+    username: esswhye
     tomcat:
       test-on-borrow: true
       validation-query: select 1
   jpa:
     generate-ddl: false
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
     show-sql: false
   security:
     user:
       name: user
       password: password
   flyway:
-    url: jdbc:mysql://localhost:32769/Eviant?useSSL=false&allowPublicKeyRetrieval=true
-    user: user
+    url: jdbc:mysql://192.168.1.26:3306/Eviant?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Singapore
+    user: esswhye
     password: password
     validate-on-migrate: true
     enabled: false
     #baseline-on-migrate: true
   cloud:
     consul:
-      host: 172.28.1.253
+      host: localhost
       port: 8500
 
 ##https://stripe.com/ chansengyong@live.com
 stripe-properties:
   public-key: pk_test_EBCu2AlRV8SpgOcNtklB0NEw006eFS6SPv
   secret-key: sk_test_fjc9NPcjzjq04Ol81X8aIjjD00jRTfSuMB
+
 feign:
   client:
     config:
@@ -42,3 +43,15 @@ feign:
         connectTimeOut: 10000
         readTimeout: 10000
         loggerLevel: basic
+  hystrix:
+    enabled: true
+
+hystrix:
+  metrics:
+    enabled: true
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 12000
