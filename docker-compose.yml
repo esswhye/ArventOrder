@@ -1,0 +1,20 @@
+version: "3.3"
+
+services:
+
+  order:
+    build: .
+    image: esswhye/arvent-order
+    environment:
+      SPRING_PROFILES_ACTICE: dt
+    #TESTING SWAGGER
+    ports:
+      - 12142:12142
+    networks:
+      - arvent_backend
+    deploy:
+      replicas: 1
+
+networks:
+  arvent_backend:
+    external: true

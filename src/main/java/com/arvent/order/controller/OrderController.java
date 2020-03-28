@@ -13,6 +13,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.arvent.order.entity.Order;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
 @RestController
 @RequestMapping(name = "order")
 //@AllArgsConstructor
@@ -21,10 +24,9 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
-
     @ApiOperation(value = "Create Order")
     @PostMapping("/create")
-    public ResponseEntity createOrder(@RequestBody ShoppingCartDTO shoppingCartDTO) throws OutOfStockException {
+    public ResponseEntity<String> createOrder(@RequestBody ShoppingCartDTO shoppingCartDTO) throws OutOfStockException {
 
         /**
          * UpdateProductQuantity
@@ -90,10 +92,11 @@ public class OrderController {
     private int counter;
 
     @GetMapping("/testLoadBalancing")
-    public ResponseEntity loadBalancingTest() throws InterruptedException {
+    public ResponseEntity loadBalancingTest() throws InterruptedException, UnknownHostException {
 
         counter++;
-        return new ResponseEntity<>(counter + " ==> response from " + port,HttpStatus.OK);
+        InetAddress IP=InetAddress.getLocalHost();
+        return new ResponseEntity<>(counter + " ==> response from " + port + " " + IP.toString(),HttpStatus.OK);
 
     }
 

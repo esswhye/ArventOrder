@@ -71,10 +71,10 @@ public class OrderServiceImpl implements OrderService
 
         Order orderSaved = orderRepository.save(order);
 
-
+        //shoppingCartService.deleteItemsByShoppingCartId(shoppingCartDTO.getItemList());
 
         //Remove this after finishing payment
-        //shoppingCartService.deleteItemsByShoppingCartId(shoppingCartDTO.getItemList());
+
 
 
         return orderSaved;

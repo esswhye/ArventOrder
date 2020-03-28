@@ -4,9 +4,9 @@ spring:
   application:
     name: order-service
   datasource:
-    url: jdbc:mysql://192.168.1.26:3306/Eviant?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Singapore
+    url: jdbc:mysql://128.199.165.251:3306/Eviant?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Singapore
     password: password
-    username: esswhye
+    username: root
     tomcat:
       test-on-borrow: true
       validation-query: select 1
@@ -20,16 +20,12 @@ spring:
       name: user
       password: password
   flyway:
-    url: jdbc:mysql://192.168.1.26:3306/Eviant?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Singapore
-    user: esswhye
+    url: jdbc:mysql://128.199.165.251:3306/Eviant?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Singapore
+    user: root
     password: password
-    validate-on-migrate: true
-    enabled: false
+    validate-on-migrate: off
+    enabled: true
     #baseline-on-migrate: true
-  cloud:
-    consul:
-      host: localhost
-      port: 8500
 
 ##https://stripe.com/ chansengyong@live.com
 stripe-properties:
@@ -55,3 +51,21 @@ hystrix:
         isolation:
           thread:
             timeoutInMilliseconds: 12000
+#logging:
+#  level:
+#    org.springframework: ERROR
+#    com.arvent: INFO
+#  pattern:
+#    console: "%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"
+#    file: "%d %p %c{1.} [%t] %m%n"
+#  file: app.log
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: shutdown, health
+  endpoint:
+    shutdown:
+      enabled: true
+
