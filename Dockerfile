@@ -1,4 +1,18 @@
-FROM java:8-jdk
+#
+# Build stage
+#
+FROM maven:3.6.0-jdk-8-slim AS build
+COPY src /src
+COPY pom.xml .
+RUN mvn -f /home/app/pom.xml clean package
+
+
+
+
+#
+# Package Stage
+#
+FROM openjdk:8-jdk-alpine
 ARG JAR_FILE=target/*.jar
 COPY ${JAR_FILE} app.jar
 
