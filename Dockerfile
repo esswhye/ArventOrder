@@ -11,8 +11,9 @@ RUN mvn -f pom.xml clean package
 # Package Stage
 #
 FROM openjdk:8-jdk-alpine
-ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} app.jar
+#ARG JAR_FILE=target/*.jar
+#COPY ${JAR_FILE} app.jar
+COPY --from=build target/*-SNAPSHOT.jar app.jar
 
 ENV JAVA_OPTIONS    -Xmx256m
 ENV TIME_ZONE Asia/Singapore
