@@ -4,9 +4,7 @@
 FROM maven:3.6.0-jdk-8-slim AS build
 COPY src /src
 COPY pom.xml .
-RUN mvn -f /home/app/pom.xml clean package
-
-
+RUN mvn -f pom.xml clean package
 
 
 #
@@ -22,7 +20,7 @@ ENV TIME_ZONE Asia/Singapore
 ENV SPRING_PROFILES_ACTIVE dt
 
 RUN echo "$TIME_ZONE" > /etc/timezone
-RUN dpkg-reconfigure -f noninteractive tzdata
+#RUN dpkg-reconfigure -f noninteractive tzdata
 
 WORKDIR /app
 
