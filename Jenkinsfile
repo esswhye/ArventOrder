@@ -22,7 +22,8 @@ node{
     stage("Unit Test & Build") {
               //An Example
               //sh 'mvn test'
-             try{ sh 'mvn clean install'
+              sh 'mvn clean install'
+             try{
               //sh 'docker login'
               sh 'docker build -t ${DOCKERHUB_USERNAME}/${project}:${BUILD_NUMBER} -f DockerfileTest .'
               }
