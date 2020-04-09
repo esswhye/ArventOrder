@@ -4,7 +4,7 @@ services:
 
   order:
     build: .
-    image: esswhye/arvent-order
+    image: esswhye/arvent-order:latest
     environment:
       SPRING_PROFILES_ACTICE: dt
     #TESTING SWAGGER
