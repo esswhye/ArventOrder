@@ -3,7 +3,7 @@ version: "3.3"
 services:
 
   order:
-    build: .
+    build: DockerfileTest
     image: esswhye/arvent-order:latest
     environment:
       SPRING_PROFILES_ACTICE: dt
