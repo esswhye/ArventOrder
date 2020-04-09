@@ -2,7 +2,7 @@ env.DOCKERHUB_USERNAME = 'esswhye'
 env.project = 'arvent-order'
 env.dockerproject = 'arvent_order'
 env.dockerportest = '1111:12142'
-//${dockerportest}
+//${dockerproject}
 /*
     Not a very CI/CD Way due to limitation of server  i have (Only using 2 server in 1 environment)
 */
@@ -34,7 +34,7 @@ node{
     stage("Integration Test") {
           try {
             //Removing the server in order to test (CPU limitation and ports)
-            sh "docker service rm arvent_product || true"
+            sh "docker service rm ${dockerproject} || true"
 
 
             sh "docker rm -f ${project} || true"

@@ -34,6 +34,7 @@ spring:
         prefer-ip-address: true
         register-health-check: true
         health-check-interval: 15s
+        health-check-timeout: 60s
       host: consul
       port: 8500
       config:
