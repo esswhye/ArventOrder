@@ -8,8 +8,8 @@ services:
     environment:
       SPRING_PROFILES_ACTICE: dt
     #TESTING SWAGGER
-    ports:
-      - 12142:12142
+#    ports:
+#      - 12142:12142
     networks:
       - arvent_backend
     deploy:

@@ -15,6 +15,9 @@ spring:
         service-name: order-service
         register-health-check: true
         health-check-interval: 15s
+        prefer-ip-address: true
+        health-check-timeout: 120s
+        healthCheckCriticalTimeout: 5m
       retry:
         initial-interval: 1000
         max-attempts: 10
@@ -28,19 +31,20 @@ spring:
     consul:
       discovery:
         enabled: true
-        instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
-        #instance-id: ${spring.application.name}:${random.value}
+        #instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
+        instance-id: ${spring.application.name}:${random.value}
         service-name: order-service
         prefer-ip-address: true
         register-health-check: true
         health-check-interval: 15s
-        health-check-timeout: 60s
+        health-check-timeout: 120s
+        healthCheckCriticalTimeout: 5m
       host: consul
       port: 8500
-      config:
-        watch:
-          enabled: true
-        enabled: true
+#      config:
+#        watch:
+#          enabled: true
+#        enabled: true
 ---
 spring:
   profiles: dp

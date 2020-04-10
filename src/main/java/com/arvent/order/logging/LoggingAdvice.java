@@ -9,7 +9,7 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.security.web.util.OnCommittedResponseWrapper;
+//import org.springframework.security.web.util.OnCommittedResponseWrapper;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StopWatch;
 
@@ -30,12 +30,13 @@ public class LoggingAdvice {
         String methodName = pjp.getSignature().getName();
         String className = pjp.getTarget().getClass().toString();
         Object[] array = pjp.getArgs();
+        /*
         for (int i = 0; i < array.length; i++) {
             if (array[i] instanceof OnCommittedResponseWrapper) {
                 array[i] = "";
             }
         }
-
+           */
         log.info("Method Invoked " + className + ": " + methodName + "()" + " arguments :" + mapper.writeValueAsString(array));
         Object object = pjp.proceed();
 
