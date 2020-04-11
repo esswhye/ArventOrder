@@ -5,7 +5,7 @@ spring:
     name: order-service
   datasource:
     url: jdbc:mysql://128.199.228.72:3306/Eviant?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Singapore
-    password: password
+    password: requirepass123
     username: root
     tomcat:
       test-on-borrow: true
@@ -22,7 +22,7 @@ spring:
   flyway:
     url: jdbc:mysql://128.199.228.72:3306/Eviant?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Singapore
     user: root
-    password: password
+    password: requirepass123
     validate-on-migrate: off
     enabled: true
     #baseline-on-migrate: true
