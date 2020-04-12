@@ -61,10 +61,16 @@ logging:
   file: app.log
 
 management:
+  management:
+    metris:
+      export:
+        prometheus:
+          enabled:
+            true
   endpoints:
     web:
       exposure:
-        include: shutdown, health
+        include: shutdown, health, prometheus
   endpoint:
     shutdown:
       enabled: true
