@@ -23,6 +23,7 @@ services:
     #          - "node.hostname==Arvent-2"
     volumes:
       - my-arvent:/app
+      - shareclasses:/opt/shareclasses
 
 networks:
   arvent_backend:
@@ -30,3 +31,4 @@ networks:
 
 volumes:
   my-arvent:
+  shareclasses:
